@@ -17,7 +17,7 @@
             <h1>Adding Two Sine Waves</h1>
         </div>
         <div data-role="content">
-            <canvas id="canvas1" width="800" height="464">
+            <canvas id="canvas1" width="800" height="450">
             </canvas>
             <div id="controlPanel" data-role="controlgroup" data-type="horizontal">
                 <button id="pause">Start</button>
@@ -25,7 +25,14 @@
                 <button id="stepforward">Step Forward</button>
                 <button id="reset">Reset</button>
                 <br><br>
-                <input id="ampl" data-type="range" type="number" value="60" max="120" min="0" step="5" />
+                Green Height
+                <input id="ampl_1" data-type="range" type="number" value="60" max="120" min="0" step="5" />
+                Red Height
+                <input id="ampl_2" data-type="range" type="number" value="60" max="120" min="0" step="5" />
+                Green Width
+                <input id="waveWidth_1" data-type="range" type="number" value="1" max="5" min="0" step=".2" />
+                Red Width
+                <input id="waveWidth_2" data-type="range" type="number" value="1" max="5" min="0" step=".2" />
             </div>
             <div id="log">
         </div>

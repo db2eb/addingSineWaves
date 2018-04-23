@@ -8,24 +8,30 @@ function ControlPanel() {
 var canvas = $("#canvas1");
 canvas.width = canvas.attr('width');
 canvas.height = canvas.attr('height');
-var context = canvas.get(0).getContext("2d");
-var controlpanel = new ControlPanel();
-var amplslider = $("#ampl");
+var context = canvas.get(0).getContext("2d"),
+    controlpanel = new ControlPanel();
+var amplslider_1 = $("#ampl_1"); // sliders
+var amplslider_2 = $("#ampl_2");
+var waveslider_1 = $("#waveWidth_1");
+var waveslider_2 = $("#waveWidth_2");
+
 var center_init = 0.15 * canvas.width,//where it starts 
     center = center_init,
     reflector = canvas.width, // how far you want to go
     yaxis1 = 250, //position in y axis
     animationSpeed = 5000,
-    ampl_1 = 60, // height of the parabola green
-    //ampl_2 = 60, // red, not important bc there is a slider
-    spread = 130, // Speed?
+    spread = 130, // Stick with this number
     speed = 2.85, // this is the least jerky speed
-    delta_x = 0.01, // frequency
-    delta_t = 0.05;
+    delta_x = 0.015, // frequency
+    delta_t = 0.05,
+    step = .0005;
 
 function init() {
     addEventlisteners();
-    amplslider.trigger('change'); // update the slider value
+    amplslider_1.trigger('change'); // update the slider value
+    amplslider_2.trigger('change'); 
+    waveslider_1.trigger('change');
+    waveslider_2.trigger('change');
 }
 
 init();
@@ -51,7 +57,7 @@ function addEventlisteners() {
     $("#stepback").bind('click', function(event) {
         console.log("backwards")
         controlpanel.pause = true;
-        center = center - .0005;
+        center = center - step;
         animate(animationSpeed);
         $("#pause").text('Continue');
     });
@@ -59,7 +65,7 @@ function addEventlisteners() {
     $("#stepforward").bind('click', function(event) {
         console.log("forward")
         controlpanel.pause = true;
-        center = center + .0005;
+        center = center + step;
         animate(animationSpeed);
         $("#pause").text('Continue');
     });
@@ -74,9 +80,30 @@ function addEventlisteners() {
         controlpanel.started = false;
     });
 
-    amplslider.bind('change', function(event) { //ampl_2 is red string
+    amplslider_1.bind('change', function(event) { //ampl_1 is green string
         if (!controlpanel.started) {
-            ampl_2 = Number(amplslider.val());
+            ampl_1 = Number(amplslider_1.val());
+            animate(animationSpeed); // short animation which stops after one draw
+        }
+    });
+
+    amplslider_2.bind('change', function(event) { //ampl_2 is red string
+        if (!controlpanel.started) {
+            ampl_2 = Number(amplslider_2.val());
+            animate(animationSpeed); // short animation which stops after one draw
+        }
+    });
+
+    waveslider_1.bind('change', function(event) { //ampl_2 is red string
+        if (!controlpanel.started) {
+            waveWidth_1 = Number(waveslider_1.val());
+            animate(animationSpeed); // short animation which stops after one draw
+        }
+    });
+
+    waveslider_2.bind('change', function(event) { //ampl_2 is red string
+        if (!controlpanel.started) {
+            waveWidth_2 = Number(waveslider_2.val());
             animate(animationSpeed); // short animation which stops after one draw
         }
     });
@@ -108,7 +135,7 @@ function PulseCollisionDraw(yaxis, ampl2, visible) {
     context.beginPath();
     for (i = 0; i < (reflector / delta_x); i++) {
         wave_x = i + delta_x;
-        wave_1_y = wavey(ampl_1, spread, center, wave_x, delta_t);
+        wave_1_y = wavey(ampl_1, spread, center, waveWidth_1*wave_x, delta_t);
         wave_y = wave_1_y;
         context.lineTo(wave_x, yaxis + wave_y);
     }
@@ -119,7 +146,7 @@ function PulseCollisionDraw(yaxis, ampl2, visible) {
     context.beginPath();
     for (i = 0; i < (reflector / delta_x); i++) {
         wave_x = i + delta_x;
-        wave_1_y = wavey(ampl_2, -spread, center, wave_x, delta_t);
+        wave_1_y = wavey(ampl_2, -spread, center, waveWidth_2*wave_x, delta_t);
         wave_y = wave_1_y;
         context.lineTo(wave_x, yaxis + wave_y);
     }
@@ -130,7 +157,7 @@ function PulseCollisionDraw(yaxis, ampl2, visible) {
     context.beginPath();
     for (i = 0; i < (reflector / delta_x); i++) {
         wave_x = i + delta_x;
-        wave_1_y = wavey(ampl_1, spread, center, wave_x, delta_t) + wavey(ampl_2, -spread, center, wave_x, delta_t); //******THis is it
+        wave_1_y = wavey(ampl_1, spread, center, waveWidth_1*wave_x, delta_t) + wavey(ampl_2, -spread, center, waveWidth_2*wave_x, delta_t); //******THis is it
         wave_y = wave_1_y;
         context.lineTo(wave_x, yaxis + wave_y);
     }

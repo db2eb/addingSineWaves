@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>String Wave</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <style type="text/css" media="screen">
+    button {
+        width: 150px !important;
+        /*fix the button size*/
+    }
+    </style>
+</head>
+
+<body>
+
+    <div data-role="page" id="pulseCollision">
+        <div data-role="header">
+            <h1>Pulse Collision</h1>
+        </div>
+        <div data-role="content">
+
+            <canvas id="canvas1" width="800" height="464">
+
+            </canvas>
+
+            <div id="controlPanel" data-role="controlgroup" data-type="horizontal">
+                <button id="pause">Start</button>
+                <button id="stepback">Stepback</button>
+                <button id="stepforward">Stepforward</button>
+                <button id="reset">Reset</button>
+                <button id="color">Color</button>
+                <br><br>
+                <input id="ampl" data-type="range" type="number" value="-60" max="60" min="-60" step="5" />
+            </div>
+
+            <div id="log">
+
+            </div>
+            <p>
+                <em>The draw function is done.</em>
+            </p>
+            <p><a href="stringWave.html" target="_self">Back to menu</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="pulseCollision.js"></script>
+</body>
+
+</html>

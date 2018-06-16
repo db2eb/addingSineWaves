@@ -25,22 +25,26 @@
                 <button id="stepforward">Step Forward</button>
                 <button id="reset">Reset</button>
                 <br><b>Parameters can be adjusted during pause</b><br><br>
-                <div id="t1">
-                    Green Height
-                    <input id="ampl_1" data-type="range" type="number" value="60" max="120" min="0" step="5" />
-                </div>
-                <div id="t2">
-                    Red Height
-                    <input id="ampl_2" data-type="range" type="number" value="60" max="120" min="0" step="5" />
-                </div>
-                <div id="d1">
-                    Green Wave Number
-                    <input id="waveWidth_1" data-type="range" type="number" value="1" max="5" min="0" step=".2" />
-                </div>
-                <div id="d2">
-                    Red Wave Number
-                    <input id="waveWidth_2" data-type="range" type="number" value="1" max="5" min="0" step=".2" />
-                </div>
+                
+                <form id = "test">
+                    <div id="t1">
+                        Green Height
+                        <input id="ampl_1" data-type="range" type="number" value="60" max="120" min="0" step="5" />
+                    </div>
+                    <div id="t2">
+                        Red Height
+                        <input id="ampl_2" data-type="range" type="number" value="60" max="120" min="0" step="5" />
+                    </div>
+                    <div id="d1">
+                        Green Wave Number
+                        <input id="waveWidth_1" data-type="range" type="number" value="1" max="5" min="0" step=".2" />
+                    </div>
+                    <div id="d2">
+                        Red Wave Number
+                        <input id="waveWidth_2" data-type="range" type="number" value="1" max="5" min="0" step=".2" />
+                    </div>
+                </form>
+
                 <style>
                     #t1 {
                         width:50%;

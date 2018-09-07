@@ -27,38 +27,37 @@
                 <br><b>Parameters can be adjusted during pause</b><br><br>
                 
                 <form id = "test">
-                    <div id="t1">
+                    <div id="green">
                         Green Height
                         <input id="ampl_1" data-type="range" type="number" value="60" max="120" min="0" step="5" />
                     </div>
-                    <div id="t2">
+                    <div id="red">
                         Red Height
                         <input id="ampl_2" data-type="range" type="number" value="60" max="120" min="0" step="5" />
                     </div>
-                    <div id="d1">
+                    <div id="green">
                         Green Wave Number
-                        <input id="waveWidth_1" data-type="range" type="number" value="1" max="5" min="0" step=".2" />
+                        <input id="waveNumber_1" data-type="range" type="number" value="1" max="5" min="0" step=".2" />
                     </div>
-                    <div id="d2">
+                    <div id="red">
                         Red Wave Number
-                        <input id="waveWidth_2" data-type="range" type="number" value="1" max="5" min="0" step=".2" />
+                        <input id="waveNumber_2" data-type="range" type="number" value="1" max="5" min="0" step=".2" />
+                    </div>
+                    <div id="green">
+                        Green Wave Frequency
+                        <input id="waveFreq_1" data-type="range" type="number" value="1" max="5" min="-5" step="0.2" />
+                    </div>
+                    <div id="red">
+                        Red Wave Frequency
+                        <input id="waveFreq_2" data-type="range" type="number" value="1" max="5" min="-5" step="0.2" />
                     </div>
                 </form>
-
                 <style>
-                    #t1 {
+                    #green {
                         width:50%;
                         float:left;
                     }
-                    #t2 {
-                        width:50%;
-                        float:right;
-                    }
-                    #d1 {
-                        width:50%;
-                        float:left;
-                    }
-                    #d2 {
+                    #red {
                         width:50%;
                         float:right;
                     }
@@ -69,6 +68,6 @@
     </div>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script type="text/javascript" src="waterwave.js"></script>
+    <script type="text/javascript" src="addingSineWaves.js"></script>
 </body>
 </html>
